@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <stdlib.h>  // system 함수 사용을 위해 포함
+
+// 화면을 지우는 함수 (플랫폼에 따라 다를 수 있음)
+void clear_screen() {
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
+}
+
+// 3초 대기를 위한 함수 (for 반복문 사용)
+void wait_three_seconds() {
+    volatile long long i;  // 컴파일러 최적화를 방지하기 위해 volatile 사용
+    for (i = 0; i < 3000000000; i++) {
+        // 단순 대기용 빈 루프
+    }
+}
+
+int main() {
+    char date[11];  // "yyyy-mm-dd" 형식으로 10자리 + NULL 문자
+    char name[50];  // 이름을 입력받을 배열
+
+    // 날짜 입력
+    printf("[현재 날짜를 \"yyyy-mm-dd\" 형식으로 입력하세요]: ");
+    scanf_s("%10s", date, (unsigned)_countof(date));
+
+    // 이름 입력
+    printf("[당신의 이름을 입력하세요]: ");
+    scanf_s("%49s", name, (unsigned)_countof(name));
+
+    // 입력 완료 메시지
+    printf("**입력이 정상적으로 처리되었습니다.**\n");
+
+    // 3초 대기 (for 반복문 사용)
+    wait_three_seconds();
+
+    // 화면 지우기
+    clear_screen();
+
+    //스플래시 문구 배열
+   
+    printf("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+    printf("\n");
+    printf("                         [마그라테아 ver 0.1]                                          \n");
+    printf("           풀 한 포기 없는 황무지에서 반짝이는 행성을 만들내는 곳 마그라테아,          \n");
+    printf("         사람들이 보지 못하는 잠재력을 찾고 전문가의 손길을 더해 보석을 빗는 곳,       \n");
+    printf("           마그라테아에 오신걸 환영합니다.                                             \n");
+    printf("\n");
+    printf("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+    printf("[사용자]: %s                                         [실행 시간]: %s\n", name, date);
+    printf("=======================================================================================\n");
+      
+ }
+
+    
+
+
+
+
